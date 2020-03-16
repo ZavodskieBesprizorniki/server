@@ -1,5 +1,3 @@
-# Server
-
 ## Server for service on practice
 
 ### Base work with project 
