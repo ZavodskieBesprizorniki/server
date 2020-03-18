@@ -11,3 +11,4 @@ app.spec
 .vscode
 test.py
 venv
+test_postgre.py

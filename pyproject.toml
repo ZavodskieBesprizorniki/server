@@ -8,6 +8,8 @@ authors = ["smapl <a.mustafin00@mail.ru>"]
 [tool.poetry.dependencies]
 python = "^3.6.6"
 flask-restplus = "^0.13.0"
+requests = "^2.23.0"
+psycopg2-binary = "^2.8.4"
 
 
 
