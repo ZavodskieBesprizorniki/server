@@ -8,16 +8,26 @@ app = Flask(__name__)
 
 @app.route("/", methods=["POST"])
 def check():
-    event = request.get_json("event")
+
+    resp = request.get_json()
     act = work_db(DBNAME, USER, PASSWORD, HOST)
 
-    if event == "save":
-        act.add_data()
-        return 200
-    if event == "upload":
+    if resp["event"] == "save":
+
+        del resp["event"]
+
+        result = act.add_data(resp)
+
+        if result == True:
+            return {"result": "data insert in database"}
+        else:
+            return {"result": "error"}
+
+    if resp["event"] == "upload":
         act.upload_data()
         return 200
-    if event == "delete":
+
+    if resp["event"] == "delete":
         act.delete_data()
         return 200
 
