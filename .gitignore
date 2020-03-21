@@ -12,3 +12,4 @@ app.spec
 test.py
 venv
 test_postgre.py
+test_crypt.py
