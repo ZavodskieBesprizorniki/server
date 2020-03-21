@@ -1,0 +1,15 @@
+{
+    "event": "event",
+    "to_save": {
+        "fname": "Artyom",
+        "lname": "Mustafin",
+        "date_burn": "23.05.2000",
+        "secret_level": 3,
+        "password": "Password"
+    },
+    "to_upload": {},
+    "to_delete": {
+        "id": "291801384"
+    },
+    "to_check": {}
+}
