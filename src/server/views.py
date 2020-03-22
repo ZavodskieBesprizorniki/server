@@ -14,9 +14,9 @@ def check():
 
     if resp["event"] == "save":
 
-        del resp["event"]
+        data_to_save = resp["to_save"]
 
-        result = act.add_data(resp)
+        result = act.add_data(data_to_save)
 
         if result == True:
             return {"result": "data insert in database"}
@@ -36,4 +36,4 @@ def check():
 
 @app.route("/", methods=["GET"])
 def check_get():
-    return "Даша шулер"
+    return "Ashot PIDARAS"
