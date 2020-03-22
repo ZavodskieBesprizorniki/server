@@ -1,3 +1,5 @@
+import hashlib
+
 import psycopg2
 
 
@@ -11,6 +13,8 @@ class work_db(object):
 
     def add_data(self, data: dict):
         try:
+
+            data["password"] = self._cryptoPassword(data["password"])
 
             keys = []
             values = []
@@ -41,9 +45,14 @@ class work_db(object):
             print(ex)
             return False
 
+    def _cryptoPassword(self, password):
+        password = password.encode()
+        crypto_password = hashlib.sha256(password).hexdigest()
+
+        return crypto_password
+
     def upload_data(self):
         return 200
 
     def delete_data(self):
         return 200
-
