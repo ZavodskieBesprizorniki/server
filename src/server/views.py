@@ -1,16 +1,16 @@
 from flask import Flask, request, jsonify
 
-from .consts import DBNAME, USER, PASSWORD, HOST
-from .core import work_db
+from .handler import MainHandler
+from .utils import parse_args
 
 app = Flask(__name__)
 
 
 @app.route("/", methods=["POST"])
 def check():
-
+    login, password, host, dbname = parse_args()
     resp = request.get_json()
-    act = work_db(DBNAME, USER, PASSWORD, HOST)
+    act = MainHandler(dbname, login, password, host)
 
     if resp["event"] == "save":
 

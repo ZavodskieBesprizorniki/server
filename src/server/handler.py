@@ -2,8 +2,10 @@ import hashlib
 
 import psycopg2
 
+from werkzeug.security import generate_password_hash
 
-class work_db(object):
+
+class MainHandler(object):
     def __init__(self, dbname, user, password, host):
 
         self.conn = psycopg2.connect(
@@ -14,7 +16,7 @@ class work_db(object):
     def add_data(self, data: dict):
         try:
 
-            data["password"] = self._cryptoPassword(data["password"])
+            data["password"] = generate_password_hash(data["password"])
 
             keys = []
             values = []
@@ -44,12 +46,6 @@ class work_db(object):
         except Exception as ex:
             print(ex)
             return False
-
-    def _cryptoPassword(self, password):
-        password = password.encode()
-        crypto_password = hashlib.sha256(password).hexdigest()
-
-        return crypto_password
 
     def upload_data(self):
         return 200
